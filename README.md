@@ -5,8 +5,8 @@ Burak Yıldırım - 72849
 Kemal Bora Bayraktar - 75618
 
 ### TODO
-- [ ] Take Input from the User
-- [ ] Construct Tree
+- [X] Take Input from the User
+- [X] Construct Tree
 - [ ] Create Test Cases
 - [ ] Implement Different Approaches
 - [ ] Output the Result
