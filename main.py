@@ -1,9 +1,11 @@
 import tree
+
 dp = []
-def find_max_children_sum(curr, k):
+
+def find_max_children_sum(curr, k, find_max):
     maximum = -1
     for i in range(k+1):
-        result = find_max_recursive(curr.left, i) + find_max_recursive(curr.right, k-i)
+        result = find_max(curr.left, i) + find_max(curr.right, k-i)
         if result > maximum:
             maximum = result
 
@@ -20,7 +22,7 @@ def find_max_recursive(curr, k):
             return 0
         return max(find_max_recursive(curr.left, k-1) + curr.value, find_max_recursive(curr.left, k) + curr.value)
 
-    maximum = find_max_children_sum(curr, k)
+    maximum = find_max_children_sum(curr, k, find_max_recursive)
 
     if 0 < k:
         return max(find_max_recursive(curr.left, k-1) + curr.value, find_max_recursive(curr.right, k-1) + curr.value, curr.value + maximum)
@@ -42,7 +44,7 @@ def find_max_dp(curr, k):
             dp[curr.key - 1][k] = max(find_max_dp(curr.left, k-1) + curr.value, find_max_dp(curr.left, k) + curr.value)
             return dp[curr.key - 1][k]
 
-        maximum = find_max_children_sum_dp(curr, k)
+        maximum = find_max_children_sum(curr, k, find_max_dp)
 
         if 0 < k:
             dp[curr.key - 1][k] = max(find_max_dp(curr.left, k-1) + curr.value, find_max_dp(curr.right, k-1) + curr.value, curr.value + maximum)
@@ -52,25 +54,17 @@ def find_max_dp(curr, k):
     else:
         return dp[curr.key - 1][k]
 
-def find_max_children_sum_dp(curr, k):
-    maximum = -1
-    for i in range(k+1):
-        result = find_max_dp(curr.left, i) + find_max_dp(curr.right, k-i)
-        if result > maximum:
-            maximum = result
-    
-    return result
-
 def main():    
     first_line = list(map(int,input().split()))
     n, k = first_line[0], first_line[1]
-    for i in range(n):
+    values = list(map(int, input().split()))
+    
+    for _ in range(n):
         temp = []
         for _ in range(k+1):
             temp.append(None)
         dp.append(temp)
-    values = list(map(int, input().split()))
-    
+
     edges = []
     for _ in range(n-1):
         u, v = list(map(int, input().split()))
