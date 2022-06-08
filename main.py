@@ -58,11 +58,13 @@ def find_max_dp(curr, k):
         return dp[curr.key - 1][k] 
 
 def construct_dp(n, k):
+    dp.clear()
     for _ in range(n):
         temp = []
         for _ in range(k+1):
             temp.append(None)
         dp.append(temp)
+        
 
 def main():    
     first_line = list(map(int,input().split()))
