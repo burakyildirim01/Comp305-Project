@@ -1,5 +1,6 @@
 import main
 import tree
+import timeit
 
 def test1(find_max):
     values = [1, 1, -1, -1, -1]
@@ -116,8 +117,19 @@ def test11(find_max):
 
 tests = [test1, test2, test3, test4, test5, test6, test7, test8, test9, test10,
          test11]
-for i, test in enumerate(tests):
-    print(f"Recursive Algorithm #{i+1}: {test(main.find_max_recursive)}")
+
 
 for i, test in enumerate(tests):
-    print(f"Dynamic Programming Algorithm #{i+1}: {test(main.find_max_dp)}")
+    start = timeit.default_timer()
+    result = test(main.find_max_recursive)
+    stop = timeit.default_timer()
+    runtime = stop - start
+    print(f"Recursive Algorithm #{i+1}: {result}, Run Time: {1000 * runtime:.3f} ms")
+
+
+for i, test in enumerate(tests):
+    start = timeit.default_timer()
+    result = test(main.find_max_dp)
+    stop = timeit.default_timer()
+    runtime = stop - start
+    print(f"Dynamic Programming Algorithm #{i+1}: {result}, Run Time: {1000 * runtime:.3f} ms")
