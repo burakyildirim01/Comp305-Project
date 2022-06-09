@@ -10,7 +10,6 @@ Kemal Bora Bayraktar - 75618
 - [X] Create Test Cases
 - [X] Implement Different Approaches
 - [X] Output the Result
-- [ ] Analyze Time Complexity of the Algorithms
-- [ ] Analyze Correctness of the Algorithms
-- [ ] Prepare Presentation and Document
-- [ ] Discuss Further Improvements
+- [X] Analyze Time Complexity of the Algorithms
+- [X] Prepare Presentation and Document
+- [X] Discuss Further Improvements
